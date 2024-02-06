@@ -67,7 +67,7 @@ Endpoint to retrieve mothers with pagination.
 
 Endpoint to retrieve a child by ID.
 
-- **URL:** `/api/children/{id}`
+- **URL:** `/api/getChildById/{id}`
 - **Method:** `GET`
 - **Parameters:**
   - `id` (required): ID of the child
@@ -79,7 +79,7 @@ Endpoint to retrieve a child by ID.
 
 Endpoint to retrieve a mother by ID.
 
-- **URL:** `/api/mothers/{id}`
+- **URL:** `/api/getMotherById/{id}`
 - **Method:** `GET`
 - **Parameters:**
   - `id` (required): ID of the mother
@@ -91,7 +91,7 @@ Endpoint to retrieve a mother by ID.
 
 Endpoint to retrieve children by sponsor ID.
 
-- **URL:** `/api/children/sponsor/{sponsorId}`
+- **URL:** `/api/getChildrenBySponsorId/{sponsorId}`
 - **Method:** `GET`
 - **Parameters:**
   - `sponsorId` (required): ID of the sponsor
@@ -103,7 +103,7 @@ Endpoint to retrieve children by sponsor ID.
 
 Endpoint to retrieve mothers by sponsor ID.
 
-- **URL:** `/api/mothers/sponsor/{sponsorId}`
+- **URL:** `/api/getMotherBySponsorId/{sponsorId}`
 - **Method:** `GET`
 - **Parameters:**
   - `sponsorId` (required): ID of the sponsor
@@ -115,7 +115,7 @@ Endpoint to retrieve mothers by sponsor ID.
 
 Endpoint to retrieve a child by sponsor ID and child ID.
 
-- **URL:** `/api/children/sponsor/{sponsorId}/child/{childId}`
+- **URL:** `/api/getChildBySponsorIdAndChildId/{sponsorId}/{childId}`
 - **Method:** `GET`
 - **Parameters:**
   - `sponsorId` (required): ID of the sponsor
@@ -128,7 +128,7 @@ Endpoint to retrieve a child by sponsor ID and child ID.
 
 Endpoint to retrieve a mother by sponsor ID and mother ID.
 
-- **URL:** `/api/mothers/sponsor/{sponsorId}/mother/{motherId}`
+- **URL:** `/api/getChildBySponsorIdAndChildId/{sponsorId}/{childId}`
 - **Method:** `GET`
 - **Parameters:**
   - `sponsorId` (required): ID of the sponsor
@@ -141,7 +141,7 @@ Endpoint to retrieve a mother by sponsor ID and mother ID.
 
 Endpoint to sponsor a child.
 
-- **URL:** `/api/sponsor-child`
+- **URL:** `/api/sponsorChild`
 - **Method:** `POST`
 - **Request Body:**
   - `sponsor_id` (required): ID of the sponsor
@@ -154,7 +154,7 @@ Endpoint to sponsor a child.
 
 Endpoint to sponsor a mother.
 
-- **URL:** `/api/sponsor-mother`
+- **URL:** `/api/sponsorMother`
 - **Method:** `POST`
 - **Request Body:**
   - `sponsor_id` (required): ID of the sponsor
@@ -167,7 +167,7 @@ Endpoint to sponsor a mother.
 
 Endpoint to cancel a child sponsorship.
 
-- **URL:** `/api/cancel-child-sponsor`
+- **URL:** `/api/cancelChildSponsor`
 - **Method:** `POST`
 - **Request Body:**
   - `sponsor_id` (required): ID of the sponsor
@@ -180,7 +180,7 @@ Endpoint to cancel a child sponsorship.
 
 Endpoint to cancel a mother sponsorship.
 
-- **URL:** `/api/cancel-mother-sponsor`
+- **URL:** `/api/cancelMotherSponsor`
 - **Method:** `POST`
 - **Request Body:**
   - `sponsor_id` (required): ID of the sponsor
