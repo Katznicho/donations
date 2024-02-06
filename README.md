@@ -7,7 +7,7 @@ Api documentation for VXPTS v1.
 
 # Donation v1 Api Documentation
 
-Api documentation for VXPTS v1.
+Api documentation for Donations v1.
 
 ## BASE_URL: https://dashboard.fountainofpeace.org.ug
 
