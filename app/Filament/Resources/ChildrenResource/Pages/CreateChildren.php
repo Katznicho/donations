@@ -6,10 +6,13 @@ use App\Filament\Resources\ChildrenResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
+use Filament\Support\Enums\Alignment;
 
 class CreateChildren extends CreateRecord
 {
     protected static string $resource = ChildrenResource::class;
+
+    public static string | Alignment $formActionsAlignment = Alignment::Right;
 
     protected static ?string $title = "Create Child";
 

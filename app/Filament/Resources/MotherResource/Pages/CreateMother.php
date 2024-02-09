@@ -6,10 +6,12 @@ use App\Filament\Resources\MotherResource;
 use Filament\Actions;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
+use Filament\Support\Enums\Alignment;
 
 class CreateMother extends CreateRecord
 {
     protected static string $resource = MotherResource::class;
+    public static string | Alignment $formActionsAlignment = Alignment::Right;
 
     protected function getRedirectUrl(): string
     {

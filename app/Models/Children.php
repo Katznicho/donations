@@ -5,14 +5,17 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
 class Children extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'second_name',
         'story',
         'hobby',
         'profile_picture',
@@ -24,13 +27,15 @@ class Children extends Model
     protected $casts = [
         'story' => 'array',
         'hobby' => 'array',
+        'gender' => 'array',
     ];
+
+    protected $dates = ['deleted_at'];
 
     protected $hidden = [
         "created_at",
         "updated_at",
         "deleted_at",
-        "gender"
     ];
     //fountainofpeaceo_donations
 
@@ -57,6 +62,4 @@ class Children extends Model
         // Generate the full URL using the asset function
         return $profilePicturePath ? asset("storage/{$profilePicturePath}") : null;
     }
-
-    
 }

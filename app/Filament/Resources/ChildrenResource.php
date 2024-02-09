@@ -46,13 +46,24 @@ class ChildrenResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Create a new child')
-                    ->description('Add a new child to the system.')
+                // Forms\Components\Section::make('Create a new child')
+                Forms\Components\Section::make(
+                    fn ($context) =>
+                    $context === 'edit' ? 'Editing Child' : ($context === 'create' ? 'Creating a new Child' : 'Viewing Child')
+                )
+                    ->description(fn ($context) => $context === 'edit' ? 'Editing an existing child record.' : ($context === 'create' ? 'Creating a new child record.' : 'Viewing a child record.'))
                     ->schema([
-                        Forms\Components\TextInput::make('name')
+                        Forms\Components\TextInput::make('first_name')
                             ->required()
-                            ->label("Full Name")
+                            ->maxLength(255)
+                            ->label("First Name"),
+                        Forms\Components\TextInput::make('middle_name')
+                            ->label("Middle Name")
                             ->maxLength(255),
+                        Forms\Components\TextInput::make('second_name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label("Second Name"),
                         Select::make('gender')
                             ->options([
                                 'Male' => 'Male',
@@ -92,12 +103,24 @@ class ChildrenResource extends Resource
                     ->label("Cover Image")
                     ->disk("children")
                     ->circular(),
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('first_name')
                     ->searchable()
                     ->sortable()
                     ->toggleable()
                     ->copyable()
-                    ->label('Full Name'),
+                    ->label('First Name'),
+                Tables\Columns\TextColumn::make('middle_name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable()
+                    ->copyable()
+                    ->label('Middle Name'),
+                Tables\Columns\TextColumn::make('second_name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable()
+                    ->copyable()
+                    ->label('Second Name'),
                 Tables\Columns\TextColumn::make('gender')
                     ->searchable()
                     ->sortable()
@@ -167,14 +190,16 @@ class ChildrenResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
-                ]),
-            ]);
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                //     Tables\Actions\ForceDeleteBulkAction::make(),
+                //     Tables\Actions\RestoreBulkAction::make(),
+                // ]),
+            ])
+            ->recordUrl(null);
     }
 
     public static function getRelations(): array
@@ -200,6 +225,7 @@ class ChildrenResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->where("deleted_at", null);
     }
 }

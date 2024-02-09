@@ -80,12 +80,24 @@ class MotherResource extends Resource
                     ->label("Cover Image")
                     ->disk("mother")
                     ->circular(),
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('first_name')
                     ->searchable()
                     ->sortable()
                     ->toggleable()
                     ->copyable()
-                    ->label('Full Name'),
+                    ->label('First Name'),
+                Tables\Columns\TextColumn::make('middle_name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable()
+                    ->copyable()
+                    ->label('Middle Name'),
+                Tables\Columns\TextColumn::make('second_name')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable()
+                    ->copyable()
+                    ->label('Second Name'),
 
                 Tables\Columns\TextColumn::make('gender')
                     ->searchable()
@@ -156,6 +168,7 @@ class MotherResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
+            ->recordUrl(null)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -188,6 +201,7 @@ class MotherResource extends Resource
         return parent::getEloquentQuery()
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
-            ]);
+            ])
+            ->where("deleted_at", null);;
     }
 }
