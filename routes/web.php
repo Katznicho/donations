@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +19,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return redirect('/admin');
-});
+Route::get('/', [WelcomeController::class, 'index']);
+
+// Route::get('/contact', [ContactController::class, 'index']);
+
+
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
+
+// Route::get('/', function () {
+//     return redirect('/admin');
+// });
