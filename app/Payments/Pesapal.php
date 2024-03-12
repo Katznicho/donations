@@ -141,11 +141,12 @@ class Pesapal
      * @throws \Throwable Exception if an error occurs during processing.
      * @return mixed The processed order data.
      */
-    public static function orderProcess($reference, $amount, $phone, $description, $callback, $customer_names, $email, $customer_id, $cancel_url)
+    public static function orderProcess($reference, $amount, $phone, $description, $callback, $first_name, $last_name, $email, $customer_id, $cancel_url)
     {
         try {
             //code...
             $token = self::pesapalAuth();
+
             $payload = json_encode(array(
                 'id' => $reference,
                 'currency' => 'UGX',
@@ -154,11 +155,11 @@ class Pesapal
                 'redirect_mode' => 'TOP_WINDOW',
                 'callback_url' => $callback,
                 'call_back_url' => $cancel_url,
-                'notification_id' => "32268323-43fc-4462-b7ab-ddcbc498cd5e",
+                'notification_id' => "88df68a5-aa0f-41b4-badf-dd7e551505d9",
                 'billing_address' => array(
                     'phone_number' => $phone,
-                    'first_name' => $customer_names,
-                    'last_name' => $customer_names,
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
                     'email' => $email
 
                 )
@@ -170,8 +171,6 @@ class Pesapal
             $url = self::$pesapalBaseUrl . "/api/Transactions/SubmitOrderRequest";
             $headers = array("Content-Type" => "application/json", 'accept' => 'application/json', 'Authorization' => 'Bearer ' . $token->message->token);
             $data = Curl::Post($url, $headers, $payload);
-
-
 
 
             $data = json_decode(json_encode($data));

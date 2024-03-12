@@ -5,12 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
+
 class Sponsor extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'sponsor_identifier',
+        'first_name',
+        'last_name',
+        'email',
+        'phone_number',
+        'address',
+        'city',
+        'state',
+        'country',
+        'postal_code',
+
     ];
 
     public function sponsorChild()

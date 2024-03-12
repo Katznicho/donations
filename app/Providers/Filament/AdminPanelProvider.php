@@ -43,8 +43,10 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
-
             ])
+            ->brandLogo('https://fountainofpeace.org.ug/wp-content/uploads/2023/08/resized-strch-fop-logo.png')
+            ->brandName('Fountain of Peace')
+            ->brandLogoHeight('100')
             ->plugins([
                 FilamentBackgroundsPlugin::make()
                     ->showAttribution(false),

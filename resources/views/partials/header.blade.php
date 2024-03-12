@@ -11,7 +11,7 @@
                 </svg>
             </button>
             <div id="mobile-menu" class="hidden md:flex items-center space-x-4">
-                <a href="#" class="hover:underline">About</a>
+                <a href="{{ route('home') }}" class="hover:underline">Home</a>
                 <a href="{{ route('contact') }}" class="hover:underline">Contact</a>
                 <a href="#" class="hover:underline">Admin</a>
             </div>

@@ -26,7 +26,7 @@ class ChildrenResource extends Resource
     protected static ?string $model = Children::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Children';
+    protected static ?string $navigationGroup = 'Beneficiaries';
 
     protected static ?string $navigationLabel = 'Children';
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Children;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,10 @@ Route::get("test", function () {
 
     return $child;
 });
+
+Route::post("registerIPN", [PaymentController::class, "registerIPN"]);
+Route::get("listIPNS", [PaymentController::class, "listIPNS"]);
+Route::get("completePayment", [PaymentController::class, "completePayment"]);
+Route::post("processOrder", [PaymentController::class, "processOrder"]);
+
+Route::post("testSendingMessages", [PaymentController::class, "testSendingMessages"]);
